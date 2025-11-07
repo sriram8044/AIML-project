@@ -1,0 +1,58 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Manuscript Restoration + OCR (Color)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('serve_file', filename='static/styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Historical Manuscript Restoration + OCR</h1>
+    <p class="subtle">Upload → color enhance for viewing → clean B/W for OCR → export PDF + TXT.</p>
+    <form class="card" action="{{ url_for('process') }}" method="POST" enctype="multipart/form-data">
+      <label class="file">
+        <span>Select an image (PNG/JPG/TIFF/BMP/WEBP)</span>
+        <input type="file" name="image" accept="image/*" required>
+      </label>
+      <label class="row">
+        <span>OCR language (default: eng)</span>
+        <input type="text" name="lang" placeholder="eng">
+      </label>
+      <button type="submit">Process</button>
+    </form>
+
+    {% if original_path %}
+      <div class="results">
+        <div class="images three">
+          <div>
+            <h3>Original</h3>
+            <img src="{{ url_for('serve_file', filename=original_path) }}" alt="Original">
+          </div>
+          <div>
+            <h3>Color-Enhanced</h3>
+            <img src="{{ url_for('serve_file', filename=enhanced_color) }}" alt="Color Enhanced">
+          </div>
+          <div>
+            <h3>OCR-Ready</h3>
+            <img src="{{ url_for('serve_file', filename=ocr_path) }}" alt="OCR Image">
+          </div>
+        </div>
+
+        <div class="textout">
+          <h3>Extracted Text</h3>
+          <textarea readonly>{{ extracted_text }}</textarea>
+        </div>
+
+        <div class="downloads">
+          <a class="btn" href="{{ url_for('serve_file', filename=pdf_path) }}" download>Download PDF</a>
+          <a class="btn" href="{{ url_for('serve_file', filename=text_path) }}" download>Download TXT</a>
+          <a class="btn" href="{{ url_for('serve_file', filename=enhanced_color) }}" download>Download Color-Enhanced</a>
+          <a class="btn" href="{{ url_for('serve_file', filename=ocr_path) }}" download>Download OCR Image</a>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+
+*{box-sizing:border-box}
+body{margin:0;background:#0b0d12;color:#e6e9ef;font-family:system-ui,Arial,sans-serif}
+.container{max-width:1120px;margin:0 auto;padding:24px}
+h1{margin:8px 0 0;font-size:28px}
+.subtle{color:#a9b0bd;margin:4px 0 16px}
+.card{background:#121621;padding:16px;border-radius:14px;border:1px solid #23293a;display:grid;gap:12px}
+.file,.row{display:grid;gap:6px}
+input[type="file"],input[type="text"]{padding:10px;background:#0f1420;color:#e6e9ef;border:1px solid #2a3144;border-radius:10px}
+button,.btn{display:inline-block;padding:10px 14px;border-radius:10px;border:1px solid #2f7df4;background:#2f7df4;color:#fff;text-decoration:none;font-weight:600;cursor:pointer}
+button:hover,.btn:hover{filter:brightness(1.1)}
+.results{margin-top:24px;display:grid;gap:16px}
+.images.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.images img{width:100%;border:1px solid #23293a;border-radius:10px;background:#0f1420}
+.textout textarea{width:100%;min-height:240px;padding:10px;border-radius:10px;background:#0f1420;color:#e6e9ef;border:1px solid #2a3144}
+.downloads{display:flex;gap:10px;flex-wrap:wrap}
+@media (max-width:900px){.images.three{grid-template-columns:1fr}}
